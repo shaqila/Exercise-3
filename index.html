@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Planets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+  <script src="assets/js/Jquery.js">
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("#search").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#target tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+
+  <script src="planets.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Search Anything</span>
+      </div>
+      <input type="search" id="search" class="form-control" placeholder="You want to know" aria-label="Username"
+        aria-describedby="basic-addon1">
+      <a href="#" class="search_icon"> </a>
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover text-center">
+    <thead class="thead-navy">
+      <th scope="col" class="align-middle">Name</th>
+      <th scope="col" class="align-middle">Rotation Period</th>
+      <th scope="col" class="align-middle">Orbital Period</th>
+      <th scope="col" class="align-middle">Diameter</th>
+      <th scope="col" class="align-middle">Climate</th>
+      <th scope="col" class="align-middle">Gravity</th>
+      <th scope="col" class="align-middle">Terrain</th>
+      <th scope="col" class="align-middle">Surface Water</th>
+      <th scope="col" class="align-middle">Population</th>
+    </thead>
+    <tbody id='target'>
+      <tr></tr>
+    </tbody>
+  </table>
+
+
+
+
+  <script>
+    console.log(dataPlanets)
+    dataPlanets.results.forEach(function (el) {
+
+      document.querySelector('#target').insertAdjacentHTML('beforeend',
+        '<td>' + el.name + '</td>' + '<td>' + el.rotation_period + '</td>' +
+        '<td>' + el.orbital_period + '</td>' + '<td>' + el.diameter + '</td>' +
+        '<td>' + el.climate + '</td>' + '<td>' + el.gravity + '</td>' +
+        '<td>' + el.terrain + '</td>' + '<td>' + el.surface_water + '</td>' +
+        '<td>' + el.population + '</td>'
+      )
+    });
+  </script>
+
+</body>
+
+</html>
